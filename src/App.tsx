@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Vestidos from "./pages/Vestidos";
 import Trajes from "./pages/Trajes";
-import Bijouterie from "./pages/Bijouterie";
+import Accesorios from "./pages/Bijouterie";
 import Contacto from "./pages/Contacto";
 import NotFound from "./pages/NotFound";
 
@@ -23,7 +22,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/vestidos" element={<Vestidos />} />
           <Route path="/trajes" element={<Trajes />} />
-          <Route path="/bijouterie" element={<Bijouterie />} />
+          <Route path="/bijouterie" element={<Accesorios />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -9,9 +8,9 @@ const Navigation = () => {
 
   const navItems = [
     { name: "Inicio", path: "/" },
-    { name: "Vestidos", path: "/vestidos" },
-    { name: "Trajes", path: "/trajes" },
-    { name: "Bijouterie", path: "/bijouterie" },
+    { name: "Para ellas", path: "/vestidos" },
+    { name: "Para ellos", path: "/trajes" },
+    { name: "Accesorios", path: "/bijouterie" },
     { name: "Contacto", path: "/contacto" },
   ];
 
@@ -39,8 +38,7 @@ const Navigation = () => {
                     isActive(item.path)
                       ? "text-sorlet-gold border-b-2 border-sorlet-gold"
                       : "text-sorlet-charcoal hover:text-sorlet-gold"
-                  }`}
-                >
+                  }`}>
                   {item.name}
                 </Link>
               ))}
@@ -52,14 +50,12 @@ const Navigation = () => {
             <Button
               variant="ghost"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-sorlet-charcoal hover:text-sorlet-gold"
-            >
+              className="text-sorlet-charcoal hover:text-sorlet-gold">
               <svg
                 className="h-6 w-6"
                 stroke="currentColor"
                 fill="none"
-                viewBox="0 0 24 24"
-              >
+                viewBox="0 0 24 24">
                 {isMenuOpen ? (
                   <path
                     strokeLinecap="round"
@@ -93,8 +89,7 @@ const Navigation = () => {
                     isActive(item.path)
                       ? "text-sorlet-gold bg-sorlet-gold/10"
                       : "text-sorlet-charcoal hover:text-sorlet-gold hover:bg-sorlet-gold/5"
-                  }`}
-                >
+                  }`}>
                   {item.name}
                 </Link>
               ))}
