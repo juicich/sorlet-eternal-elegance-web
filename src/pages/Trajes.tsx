@@ -3,12 +3,46 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  Navigation as SwiperNavigation,
+  Pagination,
+  Autoplay,
+  EffectFade,
+} from "swiper/modules";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 
 const Trajes = () => {
+  const zapatosImages = [
+    "/images/Zapatos.jpg",
+    "/images/Zapatos1.jpg",
+    "/images/Zapatos2.jpg",
+    "/images/Cintos.jpg",
+    "/images/Cintos1.jpg",
+  ];
+
+  const camisasImages = [
+    "/images/Camisas.jpg",
+    "/images/Camisas1.jpg",
+    "/images/Chalecos.jpg",
+    "/images/Chalecos1.jpg",
+    "/images/Corbatas.jpg",
+    "/images/Corbatas1.jpg",
+    "/images/Corbatas2.jpg",
+    "/images/Moños.jpg",
+    "/images/Moños1.jpg",
+    "/images/Moños2.jpg",
+  ];
+
   const services = [
     {
       title: "Venta de Trajes",
-      description: "Trajes de alta calidad para ser propietario de tu estilo",
+      description: "Trajes de alta calidad para personalizar tu estilo",
       image: "/images/Trajes.jpg",
       features: [
         "Trajes clásicos",
@@ -19,13 +53,13 @@ const Trajes = () => {
     },
     {
       title: "Alquiler de Trajes",
-      description: "La opción perfecta para eventos especiales sin compromiso",
+      description: "La opción perfecta para eventos especiales",
       image: "/images/Traje-Alquiler.jpg",
       features: [
         "Smoking completo",
+        "Ambos",
         "Accesorios incluidos",
         "Limpieza incluida",
-        "Flexibilidad de fechas",
       ],
     },
   ];
@@ -33,27 +67,50 @@ const Trajes = () => {
   const styles = [
     {
       name: "Smoking Clásico",
-      description: "Elegancia atemporal para bodas y eventos formales",
-      image:
-        "https://images.unsplash.com/photo-1594736797933-d0a9ba25a32a?w=300&h=400&fit=crop",
+      description: "El traje perfecto para eventos formales",
+      image: "/images/Smoking-Clasico.jpg",
+      objectPosition: "top",
     },
     {
       name: "Traje Moderno",
-      description: "Cortes contemporáneos para el hombre actual",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=400&fit=crop",
+      description: "Diseño contemporáneo para el hombre actual",
+      image: "/images/Traje-Moderno.jpg",
+      objectPosition: "top",
     },
     {
       name: "Traje Slim Fit",
-      description: "Silueta estilizada para un look sofisticado",
-      image:
-        "https://images.unsplash.com/photo-1621184455862-c163dfb30e0f?w=300&h=400&fit=crop",
+      description: "Corte ajustado para un look más estilizado",
+      image: "/images/Slim-Fit.jpg",
+      objectPosition: "top",
     },
     {
       name: "Smoking de Gala",
       description: "Para ocasiones especiales y eventos de etiqueta",
-      image:
-        "https://images.unsplash.com/photo-1594736797933-d0a9ba25a32a?w=300&h=400&fit=crop",
+      image: "/images/Smoking-Gala.jpg",
+      objectPosition: "top",
+    },
+    {
+      name: "Frac",
+      description: "La máxima expresión de la elegancia formal",
+      image: "/images/Frac.jpg",
+      objectPosition: "top",
+    },
+    {
+      name: "Jaquet",
+      description: "Estilo versátil para eventos formales",
+      image: "/images/jaquet.jpeg",
+    },
+    {
+      name: "Zapatos y Cintos",
+      description: "El complemento perfecto para tu atuendo",
+      images: zapatosImages,
+      objectPosition: "top",
+    },
+    {
+      name: "Camisas y accesorios",
+      description: "Detalles que marcan la diferencia",
+      images: camisasImages,
+      objectPosition: "top",
     },
   ];
 
@@ -73,7 +130,7 @@ const Trajes = () => {
 
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
           <h1 className="font-playfair text-4xl md:text-6xl font-bold mb-4 text-shadow animate-fade-in">
-            Trajes de Novio
+            Para ellos
           </h1>
           <p className="text-lg md:text-xl mb-6 text-sorlet-gold font-playfair italic animate-fade-in">
             Elegancia y distinción para tu día especial
@@ -123,11 +180,6 @@ const Trajes = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button
-                    asChild
-                    className="bg-sorlet-gold hover:bg-sorlet-gold-dark text-sorlet-charcoal font-semibold w-full">
-                    <Link to="/contacto">Consultar Disponibilidad</Link>
-                  </Button>
                 </CardContent>
               </Card>
             ))}
@@ -154,11 +206,48 @@ const Trajes = () => {
                 key={index}
                 className="hover-lift bg-white border-sorlet-gold/20 overflow-hidden">
                 <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={style.image}
-                    alt={style.name}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                  />
+                  {style.images ? (
+                    <div className="relative aspect-[3/4] bg-white">
+                      <Swiper
+                        modules={[
+                          SwiperNavigation,
+                          Pagination,
+                          Autoplay,
+                          EffectFade,
+                        ]}
+                        effect="fade"
+                        navigation
+                        pagination={{ clickable: true }}
+                        autoplay={{ delay: 2000, pauseOnMouseEnter: true }}
+                        loop={true}
+                        className="h-full">
+                        {style.images.map((image, imageIndex) => (
+                          <SwiperSlide
+                            key={imageIndex}
+                            className="flex items-center justify-center bg-white">
+                            <img
+                              src={image}
+                              alt={`${style.name} ${imageIndex + 1}`}
+                              className="w-full h-full object-cover"
+                              style={{
+                                objectPosition:
+                                  style.objectPosition || "center",
+                              }}
+                            />
+                          </SwiperSlide>
+                        ))}
+                      </Swiper>
+                    </div>
+                  ) : (
+                    <img
+                      src={style.image}
+                      alt={style.name}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                      style={{
+                        objectPosition: style.objectPosition || "center",
+                      }}
+                    />
+                  )}
                 </div>
                 <CardContent className="p-4">
                   <h3 className="font-playfair text-lg font-semibold text-sorlet-charcoal mb-2">
@@ -198,16 +287,10 @@ const Trajes = () => {
                 icon: "✂️",
               },
               {
-                title: "Calidad Garantizada",
+                title: "Precio y Calidad Garantizada",
                 description:
                   "Trabajamos con las mejores marcas y materiales del mercado",
                 icon: "⭐",
-              },
-              {
-                title: "Flexibilidad de Fechas",
-                description:
-                  "Opciones flexibles de alquiler que se adaptan a tus tiempos",
-                icon: "📅",
               },
               {
                 title: "Accesorios Completos",
@@ -245,16 +328,9 @@ const Trajes = () => {
             ¿Listo para lucir impecable?
           </h2>
           <p className="text-lg text-sorlet-warm-gray mb-8 leading-relaxed">
-            Visita nuestro showroom o agenda una cita para probar nuestros
-            trajes y smokings
+            Visitanos y proba nuestros trajes y smokings
           </p>
-          <div className="space-x-4">
-            <Button
-              asChild
-              size="lg"
-              className="bg-sorlet-gold hover:bg-sorlet-gold-dark text-sorlet-charcoal font-semibold px-8 py-3">
-              <Link to="/contacto">Agendar Cita</Link>
-            </Button>
+          <div className="flex justify-center">
             <Button
               asChild
               size="lg"

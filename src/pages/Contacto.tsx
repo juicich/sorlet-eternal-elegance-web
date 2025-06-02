@@ -46,7 +46,7 @@ const Contacto = () => {
     },
     {
       title: "Email",
-      details: ["sorlet_novias@hotmail.com", "sorlet_novias@hotmail.com"],
+      details: ["sorlet_novias@hotmail.com"],
       icon: "✉️",
     },
     {
@@ -297,7 +297,7 @@ const Contacto = () => {
                         En auto:
                       </p>
                       <p className="text-sorlet-warm-gray">
-                        Estacionamiento disponible en la zona
+                        Estacionamiento medido y pago en la zona
                       </p>
                     </div>
                   </div>
@@ -310,9 +310,8 @@ const Contacto = () => {
                     Recomendación especial
                   </h3>
                   <p className="text-sorlet-warm-gray leading-relaxed">
-                    Te recomendamos agendar una cita previa para garantizar la
-                    atención personalizada que mereces y poder dedicarte el
-                    tiempo necesario para encontrar tu vestido o traje perfecto.
+                    Se requiere cita previa solo para la prueba de los vestidos
+                    de novia. Contáctanos
                   </p>
                 </CardContent>
               </Card>

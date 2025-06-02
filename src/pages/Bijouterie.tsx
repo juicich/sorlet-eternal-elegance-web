@@ -3,76 +3,104 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { useEffect, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 
 const Accesorios = () => {
+  const [viewportRef1, embla1] = useEmblaCarousel({ loop: true });
+  const [viewportRef2, embla2] = useEmblaCarousel({ loop: true });
+  const [viewportRef3, embla3] = useEmblaCarousel({ loop: true });
+  const [viewportRef4, embla4] = useEmblaCarousel({ loop: true });
+
+  const autoplay = useCallback((embla: any) => {
+    if (!embla) return;
+    embla.scrollNext();
+  }, []);
+
+  useEffect(() => {
+    const interval1 = setInterval(() => autoplay(embla1), 2000);
+    const interval2 = setInterval(() => autoplay(embla2), 2000);
+    const interval3 = setInterval(() => autoplay(embla3), 2000);
+    const interval4 = setInterval(() => autoplay(embla4), 2000);
+
+    return () => {
+      clearInterval(interval1);
+      clearInterval(interval2);
+      clearInterval(interval3);
+      clearInterval(interval4);
+    };
+  }, [autoplay, embla1, embla2, embla3, embla4]);
+
   const categories = [
     {
-      title: "Aretes y Pendientes",
-      description: "Elegantes aretes y pendientes para complementar tu look",
+      title: "Bijouterie",
+      description: "Complementos elegantes para realzar tu look",
       image: "/images/Hero-Bijouterie.jpg",
       items: [
-        "Perlas clásicas",
-        "Cristales Swarovski",
-        "Oro y plata",
-        "Diseños vintage",
+        "Tocados",
+        "Coronas",
+        "Cintos bordados",
+        "Anillos",
+        "Aros",
+        "Gargantillas",
+      ],
+      carousel: [
+        "/images/Corona7.jpg",
+        "/images/Corona1.jpg",
+        "/images/Corona2.jpg",
+        "/images/Corona3.jpg",
+        "/images/Corona4.jpg",
+        "/images/Corona5.jpg",
       ],
     },
     {
-      title: "Collares y Gargantillas",
-      description: "Piezas únicas que realzan tu escote y vestido",
-      image:
-        "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&h=400&fit=crop",
-      items: [
-        "Perlas naturales",
-        "Cadenas delicadas",
-        "Colgantes especiales",
-        "Sets coordinados",
+      title: "Velos",
+      description: "Velos de novia para cada estilo",
+      image: "/images/Velos.jpg",
+      items: ["Velos cortos", "Velos largos", "Velos bordados"],
+      carousel: [
+        "/images/Velo1.jpg",
+        "/images/Velo2.jpg",
+        "/images/Velo3.jpg",
+        "/images/Velo4.jpg",
+        "/images/Velo5.jpg",
       ],
     },
     {
-      title: "Pulseras y Brazaletes",
-      description: "Accesorios delicados para tus muñecas",
-      image: "/images/Pulseras.jpg",
+      title: "Ramos",
+      description: "Ramos artificiales para novias y eventos",
+      image: "/images/Ramos.jpg",
       items: [
-        "Pulseras de perlas",
-        "Brazaletes dorados",
-        "Diseños minimalistas",
-        "Piezas vintage",
+        "Ramos de novia",
+        "Ramos de 15 años",
+        "Ramos para damas",
+        "Tocados florales",
+      ],
+      carousel: [
+        "/images/Ramo1.jpg",
+        "/images/Ramo2.jpg",
+        "/images/Ramo3.jpg",
+        "/images/Ramo4.jpg",
+        "/images/Ramo5.jpg",
       ],
     },
     {
-      title: "Tiaras y Diademas",
-      description: "Corona tu día especial con elegancia real",
-      image: "/images/Tiaras.jpg",
-      items: [
-        "Tiaras de cristal",
-        "Diademas florales",
-        "Coronas de perlas",
-        "Accesorios para el cabello",
-      ],
-    },
-    {
-      title: "Anillos Especiales",
-      description: "Anillos de compromiso y alianzas únicas",
-      image:
-        "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&h=400&fit=crop",
-      items: [
-        "Solitarios clásicos",
-        "Anillos de compromiso",
-        "Alianzas matrimoniales",
-        "Diseños personalizados",
-      ],
-    },
-    {
-      title: "Sets Completos",
-      description: "Conjuntos coordinados para un look perfecto",
-      image:
-        "https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=400&h=400&fit=crop",
-      items: [
-        "Sets de perlas",
-        "Coordinados dorados",
-        "Conjuntos temáticos",
-        "Colecciones especiales",
+      title: "Abrigos",
+      description: "Elegantes complementos para cubrir tus hombros",
+      image: "/images/Abrigos.jpg",
+      items: ["Chalinas", "Stolas", "Saquitos"],
+      carousel: [
+        "/images/Chalina1.jpg",
+        "/images/Chalina2.jpg",
+        "/images/Chalina3.jpg",
+        "/images/Chalina4.jpg",
       ],
     },
   ];
@@ -138,17 +166,52 @@ const Accesorios = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {categories.map((category, index) => (
               <Card
                 key={index}
-                className="hover-lift bg-white border-sorlet-gold/20 overflow-hidden">
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={category.image}
-                    alt={category.title}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
-                  />
+                className={`hover-lift bg-white border-sorlet-gold/20 overflow-hidden ${
+                  index === 0 || index === 1 || index === 2 || index === 3
+                    ? "lg:col-span-2"
+                    : ""
+                }`}>
+                <div
+                  className={`relative overflow-hidden ${
+                    index === 0 || index === 1 || index === 2 || index === 3
+                      ? "h-96"
+                      : "h-48"
+                  }`}>
+                  {(index === 0 || index === 1 || index === 2 || index === 3) &&
+                  category.carousel ? (
+                    <Carousel className="w-full h-full">
+                      <CarouselContent>
+                        {category.carousel.map((image, i) => (
+                          <CarouselItem key={i}>
+                            <img
+                              src={image}
+                              alt={`${category.title} ${i + 1}`}
+                              className={`w-full h-full ${
+                                image.includes("Velo") ||
+                                image.includes("Corona") ||
+                                image.includes("Ramo") ||
+                                image.includes("Chalina")
+                                  ? "object-contain object-top max-h-[500px]"
+                                  : "object-contain"
+                              }`}
+                            />
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious className="left-4" />
+                      <CarouselNext className="right-4" />
+                    </Carousel>
+                  ) : (
+                    <img
+                      src={category.image}
+                      alt={category.title}
+                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                    />
+                  )}
                 </div>
                 <CardContent className="p-6">
                   <h3 className="font-playfair text-xl font-semibold text-sorlet-charcoal mb-3">
@@ -167,12 +230,6 @@ const Accesorios = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="border-sorlet-gold text-sorlet-gold hover:bg-sorlet-gold hover:text-white w-full">
-                    <Link to="/contacto">Ver Colección</Link>
-                  </Button>
                 </CardContent>
               </Card>
             ))}
@@ -328,16 +385,9 @@ const Accesorios = () => {
             Encuentra tus accesorios perfectos
           </h2>
           <p className="text-lg text-sorlet-warm-gray mb-8 leading-relaxed">
-            Visita nuestro showroom y descubre nuestra colección completa de
-            accesorios
+            Visitanos y descubre nuestra colección completa de accesorios
           </p>
-          <div className="space-x-4">
-            <Button
-              asChild
-              size="lg"
-              className="bg-sorlet-gold hover:bg-sorlet-gold-dark text-sorlet-charcoal font-semibold px-8 py-3">
-              <Link to="/contacto">Agendar Cita</Link>
-            </Button>
+          <div className="flex justify-center">
             <Button
               asChild
               size="lg"

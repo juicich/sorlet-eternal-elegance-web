@@ -6,12 +6,13 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
-  const navItems = [
-    { name: "Inicio", path: "/" },
-    { name: "Para ellas", path: "/vestidos" },
-    { name: "Para ellos", path: "/trajes" },
-    { name: "Accesorios", path: "/bijouterie" },
-    { name: "Contacto", path: "/contacto" },
+  const links = [
+    { href: "/", label: "Inicio" },
+    { href: "/vestidos", label: "Para ellas" },
+    { href: "/trajes", label: "Para ellos" },
+    { href: "/peques", label: "Para peques" },
+    { href: "/bijouterie", label: "Accesorios" },
+    { href: "/contacto", label: "Contacto" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -30,16 +31,16 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
+              {links.map((item) => (
                 <Link
-                  key={item.name}
-                  to={item.path}
+                  key={item.label}
+                  to={item.href}
                   className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                    isActive(item.path)
+                    isActive(item.href)
                       ? "text-sorlet-gold border-b-2 border-sorlet-gold"
                       : "text-sorlet-charcoal hover:text-sorlet-gold"
                   }`}>
-                  {item.name}
+                  {item.label}
                 </Link>
               ))}
             </div>
@@ -80,17 +81,17 @@ const Navigation = () => {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 bg-sorlet-cream border-t border-sorlet-gold/20">
-              {navItems.map((item) => (
+              {links.map((item) => (
                 <Link
-                  key={item.name}
-                  to={item.path}
+                  key={item.label}
+                  to={item.href}
                   onClick={() => setIsMenuOpen(false)}
                   className={`block px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                    isActive(item.path)
+                    isActive(item.href)
                       ? "text-sorlet-gold bg-sorlet-gold/10"
                       : "text-sorlet-charcoal hover:text-sorlet-gold hover:bg-sorlet-gold/5"
                   }`}>
-                  {item.name}
+                  {item.label}
                 </Link>
               ))}
             </div>

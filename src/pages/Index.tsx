@@ -21,6 +21,13 @@ const Index = () => {
       link: "/trajes",
     },
     {
+      title: "Trajes para Niños",
+      description:
+        "Trajes de comunión, bautismo y eventos especiales para que los más pequeños luzcan elegantes",
+      image: "/images/Comunion.jpg",
+      link: "/peques",
+    },
+    {
       title: "Accesorios",
       description: "Complementos exclusivos para complementar tu look especial",
       image: "/images/Bijou1.jpg",
@@ -42,19 +49,19 @@ const Index = () => {
           <div className="absolute inset-0 bg-sorlet-charcoal/40"></div>
         </div>
 
-        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto flex flex-col h-full justify-end pb-10">
           <h1 className="font-playfair text-5xl md:text-7xl font-bold mb-6 text-shadow animate-fade-in">
             Sorlet
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-sorlet-gold font-playfair italic animate-fade-in">
+          <p className="text-xl md:text-2xl mb-16 text-sorlet-gold font-playfair italic animate-fade-in">
             "El recuerdo de un día para toda la vida"
           </p>
-          <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto leading-relaxed animate-fade-in">
+          <p className="text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in">
             Más de 40 años de experiencia creando momentos inolvidables con la
             mayor variedad de prendas elegantes para ese dia tan especial y con
             todos los accesorios que lo acompañan
           </p>
-          <div className="space-x-4 animate-fade-in">
+          <div className="space-x-4 animate-fade-in mb-6">
             <Button
               asChild
               size="lg"
@@ -84,7 +91,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <Card
                 key={index}
@@ -136,24 +143,9 @@ const Index = () => {
                 que cada cliente encuentre exactamente lo que busca para su día
                 especial.
               </p>
-              <div className="grid grid-cols-2 gap-6 mt-8">
-                <div className="text-center">
-                  <div className="text-3xl font-playfair font-bold text-sorlet-gold mb-2">
-                    40+
-                  </div>
-                  <div className="text-sorlet-warm-gray">
-                    Años de experiencia
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="text-3xl font-playfair font-bold text-sorlet-gold mb-2">
-                    5000+
-                  </div>
-                  <div className="text-sorlet-warm-gray">
-                    Clientes satisfechos
-                  </div>
-                </div>
-              </div>
+              <p className="text-xl text-sorlet-gold font-semibold mt-4">
+                Reservas hasta con seis meses de anticipación
+              </p>
             </div>
             <div className="relative">
               <img

@@ -42,6 +42,10 @@ const Vestidos = () => {
         "/images/15-2.jpg",
         "/images/15-3.jpg",
         "/images/15-4.jpg",
+        "/images/15-5.jpg",
+        "/images/15-6.jpg",
+        "/images/15-7.jpg",
+        "/images/15-8.jpg",
       ],
       features: [
         "Diseños nacionales",
@@ -64,7 +68,7 @@ const Vestidos = () => {
         "/images/fiesta7.jpg",
       ],
       features: [
-        "Vestidos largo y cortos",
+        "Vestidos largos y cortos",
         "Madrinas",
         "Eventos corporativos",
         "Graduaciones",
@@ -174,11 +178,13 @@ const Vestidos = () => {
                         </li>
                       ))}
                     </ul>
-                    <Button
-                      asChild
-                      className="bg-sorlet-gold hover:bg-sorlet-gold-dark text-sorlet-charcoal font-semibold w-full transition-all duration-300">
-                      <Link to="/contacto">Solicitar Cita</Link>
-                    </Button>
+                    {category.title === "Vestidos de Novia" && (
+                      <Button
+                        asChild
+                        className="bg-sorlet-gold hover:bg-sorlet-gold-dark text-sorlet-charcoal font-semibold w-full transition-all duration-300">
+                        <Link to="/contacto">Solicitar Cita</Link>
+                      </Button>
+                    )}
                   </CardContent>
                 </div>
               </Card>
@@ -247,19 +253,12 @@ const Vestidos = () => {
       <section className="py-20 bg-sorlet-cream">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-sorlet-charcoal mb-6">
-            ¿Lista para encontrar tu vestido perfecto?
+            ¿Lista para encontrar tu vestido?
           </h2>
           <p className="text-lg text-sorlet-warm-gray mb-8 leading-relaxed">
-            Agenda una cita personalizada y déjanos ayudarte a encontrar el
-            vestido de tus sueños
+            Visítanos y déjanos ayudarte a encontrar el vestido de tus sueños
           </p>
-          <div className="space-x-4">
-            <Button
-              asChild
-              size="lg"
-              className="bg-sorlet-gold hover:bg-sorlet-gold-dark text-sorlet-charcoal font-semibold px-8 py-3 transition-all duration-300">
-              <Link to="/contacto">Agendar Cita</Link>
-            </Button>
+          <div className="flex justify-center">
             <Button
               asChild
               size="lg"
